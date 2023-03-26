@@ -7,17 +7,16 @@ const Card = () => {
         const loadData = async() => {
             const res = await fetch(`https://openapi.programming-hero.com/api/ai/tools`);
             const value = await res.json();
-            console.log(value);
             setData(value.data.tools);
         }
         loadData();
     },[])
     return (
-        <>
+        <div className="grid grid-cols-3 gap-4 w-full mt-8 md:max-w-[80%] mx-auto">
             {
-                data.map((singleData) => console.log(singleData))
+                data.map((singleData) => <SingleDataShow key={singleData.id} singleData={singleData}></SingleDataShow>)
             }
-        </>
+        </div>
     );
 };
 
