@@ -2,14 +2,17 @@ import React from 'react';
 
 const SingleDataShow = (props) => {
     console.log(props.singleData);
+    const {name, image, description, features, published_in} = props.singleData;
+    console.log(features);
     return (
         <>
             <div className="card card-compact bg-base-100 shadow-xl">
-            <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+            <figure><img src={image} alt="Shoes" /></figure>
             <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
+                <h2 className="card-title">{name}</h2>
+                <p>{description}</p>
+                <div className="card-actions justify-between items-center">
+                <p>{published_in}</p>
                 <button className="btn btn-primary">Buy Now</button>
                 </div>
             </div>
