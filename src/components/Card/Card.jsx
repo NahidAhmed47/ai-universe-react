@@ -5,17 +5,17 @@ import SingleDataShow from './SingleDataShow';
 
 const Card = () => {
     const [data, setData] = useState([]);
+    const [cardDataDetails, setCardDataDetails] = useState({});
     const [showAll, setShowAll] = useState(false);
     const [uniqueId, setUniqueId] = useState(null);
-    console.log(uniqueId)
     useEffect(() =>{
         const loadDataById = async(id)=>{
             const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${uniqueId}`);
             const data = await res.json();
-            console.log(data);
+            setCardDataDetails(data.data);
         }
         loadDataById()
-    },[uniqueId])
+    },[uniqueId]);
     useEffect(() =>{
         const loadData = async() => {
             const res = await fetch(`https://openapi.programming-hero.com/api/ai/tools`);
@@ -36,7 +36,7 @@ const Card = () => {
                 <Button text="See more"></Button>
             </span>
             }
-            <Modal></Modal>
+            <Modal cardDataDetails={cardDataDetails}></Modal>
         </>
     );
 };

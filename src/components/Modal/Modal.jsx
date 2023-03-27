@@ -1,6 +1,8 @@
 import React from "react";
 
-const Modal = () => {
+const Modal = (props) => {
+    console.log(props.cardDataDetails);
+
   return (
     <>
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -13,7 +15,7 @@ const Modal = () => {
             ✕
           </label>
           <h3 className="text-lg font-bold">
-            Congratulations random Internet user!
+            {props.cardDataDetails.tool_name}
           </h3>
           <p className="py-4">
             You've been selected for a chance to get one year of subscription to
